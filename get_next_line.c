@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-static t_fdlist	*new_fd_item(int fd, t_fdlist *next)
+t_fdlist	*new_fd_item(int fd, t_fdlist *next)
 {
 	t_fdlist	*new;
 
@@ -29,7 +29,7 @@ static t_fdlist	*new_fd_item(int fd, t_fdlist *next)
 	return (new);
 }
 
-static t_fdlist	*get_fd_item(const int fd, t_fdlist **fd_list)
+t_fdlist	*get_fd_item(const int fd, t_fdlist **fd_list)
 {
 	t_fdlist	*tmp;
 	t_fdlist	*prev;
@@ -57,7 +57,7 @@ static t_fdlist	*get_fd_item(const int fd, t_fdlist **fd_list)
 	return (new);
 }
 
-static int		del_fd(t_fdlist **fd_list, int fd)
+int			del_fd(t_fdlist **fd_list, int fd)
 {
 	t_fdlist	*tmp;
 	t_fdlist	*prev;
@@ -83,7 +83,7 @@ static int		del_fd(t_fdlist **fd_list, int fd)
 	return (-1);
 }
 
-char			*line_join(char *line, char *buf)
+char		*line_join(char *line, char *buf)
 {
 	char *tmp;
 
@@ -94,7 +94,7 @@ char			*line_join(char *line, char *buf)
 	return (line);
 }
 
-int				get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static t_fdlist	*fd_list;
 	t_fdlist		*fd_item;
