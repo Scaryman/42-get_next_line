@@ -15,6 +15,7 @@
 # define BUFF_SIZE 100
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
 typedef struct	s_fdlist
 {
@@ -27,10 +28,4 @@ t_fdlist		*new_fd_item(int fd, t_fdlist *next);
 t_fdlist		*get_fd_item(const int fd, t_fdlist **fd_list);
 int				del_fd(t_fdlist **fd_list, int fd);
 char			*line_join(char *line, char *buf);
-char			*ft_strnew(size_t size);
-void			ft_memdel(void **ap);
-char			*ft_strjoin(char const *s1, char const *s2);
-char			*ft_strchr(const char *s, int c);
-char			*ft_strcpy(char *str1, const char *str2);
-void			*ft_memset(void *str, int c, size_t n);
 #endif
