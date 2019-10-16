@@ -31,24 +31,25 @@ t_fdlist	*new_fd_item(int fd, t_fdlist *next)
 
 t_fdlist	*get_fd_item(const int fd, t_fdlist **fd_list)
 {
-	t_fdlist	*tmp;
+	t_fdlist	*t;
 	t_fdlist	*prev;
 	t_fdlist	*new;
 
-	tmp = *fd_list;
+	t = *fd_list;
 	prev = NULL;
-	while (tmp && tmp->fd <= fd)
+	while (t && t->fd <= fd)
 	{
-		if (tmp->fd == fd)
+		if (t->fd == fd)
 		{
-			if (!(*tmp->buf) && read(tmp->fd, tmp->buf, BUFF_SIZE) < 0)
+			if (!(*t->buf)
+			&& read(t->fd, ft_memset(t->buf, '\0', BUFF_SIZE), BUFF_SIZE) < 0)
 				return (NULL);
-			return (tmp);
+			return (t);
 		}
-		prev = tmp;
-		tmp = tmp->next;
+		prev = t;
+		t = t->next;
 	}
-	if ((new = new_fd_item(fd, tmp)) == NULL)
+	if ((new = new_fd_item(fd, t)) == NULL)
 		return (NULL);
 	if (prev)
 		prev->next = new;
